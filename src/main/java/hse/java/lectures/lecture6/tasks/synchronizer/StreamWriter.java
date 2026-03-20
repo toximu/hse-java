@@ -1,6 +1,7 @@
 package hse.java.lectures.lecture6.tasks.synchronizer;
 
 import lombok.Getter;
+import lombok.SneakyThrows;
 
 import java.io.PrintStream;
 
@@ -24,12 +25,20 @@ public class StreamWriter implements Runnable {
         this.monitor = monitor;
     }
 
+    @SneakyThrows
     @Override
     public void run() {
         // Writer threads are intentionally infinite for the task contract.
         while (true) {
-            output.print(message);
-            onTick.run();
+            synchronized (monitor) {
+                while (!monitor.isWorking || !(monitor.nowWriter() == id)) {
+                    monitor.wait();
+                }
+                output.print(message);
+                onTick.run();
+                monitor.next();
+                monitor.notifyAll();
+            }
         }
     }
 
