@@ -1,5 +1,6 @@
 package hse.java.lectures.lesson7.dau;
 
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 
@@ -7,7 +8,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+@Tag("dau")
 class DauServiceImplTest {
 
     @Test
