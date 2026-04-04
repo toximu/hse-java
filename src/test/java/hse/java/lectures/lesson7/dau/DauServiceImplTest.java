@@ -19,8 +19,8 @@ class DauServiceImplTest {
         service.postEvent(new Event(0,2));
         service.postEvent(new Event(1,0));
         service.goToNextDay();
-        assertEquals(2, service.getAuthorDauStatistics(0));
-        assertEquals(1, service.getAuthorDauStatistics(1));
+        assertEquals(2L, service.getAuthorDauStatistics(0));
+        assertEquals(1L, service.getAuthorDauStatistics(1));
 
     }
 
@@ -45,7 +45,7 @@ class DauServiceImplTest {
         }
         service.goToNextDay();
         for (int i = 0; i < 10000; i++) {
-            assertEquals(10, service.getAuthorDauStatistics(i));
+            assertEquals(10L, service.getAuthorDauStatistics(i));
         }
 
     }
