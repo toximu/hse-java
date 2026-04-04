@@ -14,6 +14,7 @@ class DauServiceImplTest {
     @Test
     void JustWorks() {
         DauServiceImpl service = new DauServiceImpl();
+        service.stopScheduler();
         service.postEvent(new Event(0,0));
         service.postEvent(new Event(0,1));
         service.postEvent(new Event(0,2));
@@ -29,6 +30,7 @@ class DauServiceImplTest {
 
         ArrayList<Thread> threads = new ArrayList<>();
         DauServiceImpl service = new DauServiceImpl();
+        service.stopScheduler();
         for (int i = 0; i < 10; i++) {
             int ii = i;
             var thread = new Thread(() -> {

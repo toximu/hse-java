@@ -59,4 +59,8 @@ public class DauServiceImpl implements DauService {
     void goToNextDay() {
         update();
     }
+
+    void stopScheduler() {
+        s.shutdownNow();
+    }
 }
